@@ -85,31 +85,77 @@ const CartPanel = () => {
                   <p className="text-sm mt-1">Agrega productos del catálogo</p>
                 </div>
               ) : (
-                items.map((item) => (
-                  <div
-                    key={item.product.id}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 border border-border"
-                  >
-                    <span className="text-2xl">{item.product.icon}</span>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-body font-medium text-sm text-foreground truncate">
-                        {item.product.name}
-                      </p>
-                      {item.product.duration && (
-                        <p className="text-xs text-muted-foreground font-body">{item.product.duration}</p>
-                      )}
-                      <p className="text-sm font-semibold text-primary font-body">
-                        {formatPrice(item.product.price)} {item.quantity > 1 && `x${item.quantity}`}
-                      </p>
+                <>
+                  <div className="bg-gradient-to-br from-secondary/80 to-card border border-primary/20 rounded-xl p-4 mb-4 relative overflow-hidden">
+                    {/* Background glow */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+
+                    <div className="relative z-10 flex flex-col gap-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-primary font-display font-semibold text-sm flex items-center gap-1.5">
+                          {totalItems === 1 ? "✨ ¡Arma tu Combo!" :
+                            totalItems === 2 ? "🎉 ¡Combo Dúo!" :
+                              totalItems >= 3 ? "🌟 ¡Súper Combo!" : ""}
+                        </span>
+                        {discount > 0 && (
+                          <span className="text-xs font-bold text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full">
+                            - {formatPrice(discount)}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Progress Bar */}
+                      <div className="h-2 w-full bg-background rounded-full overflow-hidden border border-border/50">
+                        <div
+                          className="h-full bg-gradient-to-r from-primary to-gold-light transition-all duration-500 ease-out"
+                          style={{ width: `${Math.min(100, (totalItems / 3) * 100)}%` }}
+                        />
+                      </div>
+
+                      {/* Dynamic Message */}
+                      <span className="text-muted-foreground font-body text-[11px] leading-tight mt-1">
+                        {totalItems === 1 && (
+                          <>Llevas 1 plataforma. Agrega 1 más y ahorra <strong className="text-foreground">$2.000</strong></>
+                        )}
+                        {totalItems === 2 && (
+                          <>Ahorraste <strong className="text-green-400">$2.000</strong>. ¡Agrega otra plataforma y el descuento será de <strong className="text-green-400">$5.000</strong>!</>
+                        )}
+                        {totalItems >= 3 && (
+                          <>¡Súper ahorro desbloqueado! Obtienes <strong className="text-foreground">$2.000 extrá</strong> por cada nueva plataforma.</>
+                        )}
+                      </span>
                     </div>
-                    <button
-                      onClick={() => removeItem(item.product.id)}
-                      className="p-1.5 rounded-md hover:bg-destructive/10 text-muted-foreground hover:text-destructive transition-colors"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
                   </div>
-                ))
+                  {items.map((item) => (
+                    <div
+                      key={item.product.id}
+                      className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 border border-border"
+                    >
+                      {item.product.imageUrl ? (
+                        <img src={item.product.imageUrl} alt={item.product.name} className="w-8 h-8 object-contain drop-shadow" />
+                      ) : (
+                        <span className="text-2xl">{item.product.icon}</span>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <p className="font-body font-medium text-sm text-foreground truncate">
+                          {item.product.name}
+                        </p>
+                        {item.product.duration && (
+                          <p className="text-xs text-muted-foreground font-body">{item.product.duration}</p>
+                        )}
+                        <p className="text-sm font-semibold text-primary font-body">
+                          {formatPrice(item.product.price)} {item.quantity > 1 && `x${item.quantity}`}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => removeItem(item.product.id)}
+                        className="p-1.5 rounded-md hover:bg-destructive/10 text-muted-foreground hover:text-destructive transition-colors"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))}
+                </>
               )}
             </div>
 
@@ -133,10 +179,17 @@ const CartPanel = () => {
 
                 <button
                   onClick={sendToWhatsApp}
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-green-600 hover:bg-green-700 text-white font-body font-semibold transition-colors"
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-green-600 hover:bg-green-700 text-white font-body font-semibold transition-colors mt-2"
                 >
                   <MessageCircle className="w-5 h-5" />
                   Enviar pedido por WhatsApp
+                </button>
+
+                <button
+                  onClick={() => setIsCartOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-lg border border-primary text-primary hover:bg-primary/10 font-body font-semibold transition-colors mt-2"
+                >
+                  Elegir más productos
                 </button>
 
                 <button

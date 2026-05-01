@@ -2,7 +2,6 @@ import { ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { BUSINESS_NAME } from "@/data/products";
 import { motion } from "framer-motion";
-import logo from "@/assets/logo.jpg";
 
 const Navbar = () => {
   const { totalItems, setIsCartOpen } = useCart();
@@ -15,7 +14,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3">
-          <img src={logo} alt={BUSINESS_NAME} className="w-14 h-14 rounded-full object-cover border-2 border-primary/40 shadow-lg shadow-primary/10" />
+          <img src={window.AppConfig.logoUrl} alt={BUSINESS_NAME} className="w-14 h-14 rounded-full object-cover border-2 border-primary/40 shadow-lg shadow-primary/10" />
           <div className="hidden sm:block">
             <span className="font-display text-lg font-bold text-gradient-gold block leading-tight">Streaming</span>
             <span className="font-display text-sm font-semibold text-primary/80 tracking-widest uppercase">Alen</span>
