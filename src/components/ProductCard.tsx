@@ -91,7 +91,7 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
               {/* Highlight combo price */}
               <div className="mt-1 flex items-center justify-center">
                 <span className="text-[10px] sm:text-[11px] font-body text-primary/80 bg-primary/10 px-2 py-0.5 rounded-full">
-                  Llévalo por <strong className="text-primary">{formatPrice(product.price - 2000)}</strong> en Combo
+                  Llévalo con descuento en Combo
                 </span>
               </div>
             </div>

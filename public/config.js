@@ -39,7 +39,7 @@ window.AppConfig = {
         {
             id: "disney-premium",
             name: "Disney+ Premium",
-            price: 13000,
+            price: 14000,
             originalPrice: 18000,
             duration: "1 mes",
             category: "Streaming",
@@ -117,8 +117,8 @@ window.AppConfig = {
         {
             id: "paramount",
             name: "Paramount+",
-            price: 8000,
-            originalPrice: 13000,
+            price: 14000,
+            originalPrice: 18000,
             duration: "1 mes",
             category: "Streaming",
             icon: "⭐",
