@@ -151,7 +151,7 @@ window.AppConfig = {
         {
             id: "chatgpt",
             name: "ChatGPT a Dominio",
-            price: 25000,
+            price: 35000,
             originalPrice: 35000,
             category: "Productividad",
             icon: "🤖",
