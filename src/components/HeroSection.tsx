@@ -113,7 +113,7 @@ const HeroSection = () => {
         >
           <button
             onClick={scrollToCatalog}
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-gold-light text-primary-foreground font-body font-bold rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:scale-105 uppercase tracking-wider text-sm"
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-gold-light text-primary-foreground font-body font-bold rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:scale-105 uppercase tracking-wider text-sm animate-heartbeat"
           >
             Ver Catálogo
             <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />

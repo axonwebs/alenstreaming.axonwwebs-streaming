@@ -4,6 +4,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.06); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.04); }
+  56%       { transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2.4s ease-in-out infinite;
+}
+
 @layer base {
   :root {
     /* === PREMIUM BLACK & GOLD THEME === */
