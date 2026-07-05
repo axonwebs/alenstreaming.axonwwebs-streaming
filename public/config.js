@@ -83,7 +83,7 @@ window.AppConfig = {
         {
             id: "spotify-3meses",
             name: "Spotify",
-            price: 25500,
+            price: 26000,
             originalPrice: 33000,
             duration: "3 meses",
             category: "Música",
