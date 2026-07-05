@@ -105,19 +105,8 @@ const HeroSection = () => {
           ))}
         </motion.div>
 
-        <motion.p
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 font-body font-light"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          Las mejores plataformas de streaming y herramientas digitales.
-          <br className="hidden sm:block" />
-          Cuentas 100% originales con activación inmediata.
-        </motion.p>
-
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -130,6 +119,17 @@ const HeroSection = () => {
             <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
           </button>
         </motion.div>
+
+        <motion.p
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 font-body font-light"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          Las mejores plataformas de streaming y herramientas digitales.
+          <br className="hidden sm:block" />
+          Cuentas 100% originales con activación inmediata.
+        </motion.p>
       </div>
 
       {/* Bottom gold line */}
