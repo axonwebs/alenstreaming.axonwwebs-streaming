@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { Product, formatPrice } from "@/data/products";
@@ -8,7 +9,7 @@ interface ProductCardProps {
   index: number;
 }
 
-const ProductCard = ({ product, index }: ProductCardProps) => {
+const ProductCard = memo(({ product, index }: ProductCardProps) => {
   const { addItem, removeOneItem, items } = useCart();
   const cartItem = items.find((i) => i.product.id === product.id);
   const quantity = cartItem ? cartItem.quantity : 0;
@@ -124,6 +125,6 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
       </div>
     </motion.div>
   );
-};
+});
 
 export default ProductCard;

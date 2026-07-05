@@ -78,9 +78,9 @@ const PromoToast = () => {
 
                             {/* Progress bar for auto-dismiss */}
                             <motion.div
-                                className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-gold-light"
-                                initial={{ width: "100%" }}
-                                animate={{ width: "0%" }}
+                                className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-primary to-gold-light origin-left"
+                                initial={{ scaleX: 1 }}
+                                animate={{ scaleX: 0 }}
                                 transition={{ duration: 6, ease: "linear" }}
                             />
                         </div>

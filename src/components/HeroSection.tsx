@@ -1,8 +1,20 @@
 import { motion } from "framer-motion";
 import { ChevronDown, Sparkles, Star } from "lucide-react";
 import { BUSINESS_NAME } from "@/data/products";
+import { useIsMobile } from "@/hooks/use-mobile";
+
+const particles = Array.from({ length: 30 }, () => ({
+  left: `${Math.random() * 100}%`,
+  top: `${Math.random() * 100}%`,
+  width: `${1 + Math.random() * 3}px`,
+  height: `${1 + Math.random() * 3}px`,
+  background: `hsla(43, 72%, ${50 + Math.random() * 30}%, ${0.15 + Math.random() * 0.2})`,
+  duration: 3 + Math.random() * 3,
+  delay: Math.random() * 3,
+}));
 
 const HeroSection = () => {
+  const isMobile = useIsMobile();
   const scrollToCatalog = () => {
     document.getElementById("catalogo")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -20,35 +32,37 @@ const HeroSection = () => {
         <div className="absolute top-0 right-1/3 w-px h-full bg-primary -rotate-6 origin-top" />
       </div>
 
-      {/* Gold particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${1 + Math.random() * 3}px`,
-              height: `${1 + Math.random() * 3}px`,
-              background: `hsla(43, 72%, ${50 + Math.random() * 30}%, ${0.15 + Math.random() * 0.2})`,
-            }}
-            animate={{
-              y: [0, -40, 0],
-              opacity: [0.1, 0.5, 0.1],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 3,
-              repeat: Infinity,
-              delay: Math.random() * 3,
-            }}
-          />
-        ))}
-      </div>
+      {/* Gold particles — solo desktop */}
+      {!isMobile && (
+        <div className="absolute inset-0 overflow-hidden">
+          {particles.map((p, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full"
+              style={{
+                left: p.left,
+                top: p.top,
+                width: p.width,
+                height: p.height,
+                background: p.background,
+              }}
+              animate={{
+                y: [0, -40, 0],
+                opacity: [0.1, 0.5, 0.1],
+                scale: [1, 1.5, 1],
+              }}
+              transition={{
+                duration: p.duration,
+                repeat: Infinity,
+                delay: p.delay,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Radial gold glow behind logo */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[100px]" />
+      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary/[0.04] rounded-full ${isMobile ? "w-64 h-64 blur-3xl" : "w-[500px] h-[500px] blur-[100px]"}`} />
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         {/* Logo */}

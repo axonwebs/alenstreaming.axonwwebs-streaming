@@ -16,6 +16,27 @@
   animation: heartbeat 2.4s ease-in-out infinite;
 }
 
+/* En pantallas táctiles: cancelar hovers que quedan pegados */
+@media (hover: none) {
+  .group:hover .group-hover\:scale-110 {
+    transform: none !important;
+  }
+  .hover\:-translate-y-2:hover {
+    transform: none !important;
+  }
+  .hover\:shadow-xl:hover {
+    box-shadow: none !important;
+  }
+}
+
+/* En móvil: eliminar backdrop-blur costoso */
+@media (max-width: 767px) {
+  [class*="backdrop-blur"] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
 @layer base {
   :root {
     /* === PREMIUM BLACK & GOLD THEME === */
