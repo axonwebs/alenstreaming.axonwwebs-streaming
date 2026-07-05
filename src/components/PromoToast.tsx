@@ -14,11 +14,7 @@ const PromoToast = () => {
     const [messages, setMessages] = useState<PromoMessage[]>([]);
 
     const addMessage = useCallback((msg: PromoMessage) => {
-        setMessages((prev) => {
-            // Don't add duplicate messages
-            if (prev.some((m) => m.id === msg.id)) return prev;
-            return [...prev, msg];
-        });
+        setMessages([msg]);
 
         // Auto-dismiss after 6 seconds
         setTimeout(() => {
